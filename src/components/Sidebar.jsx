@@ -21,11 +21,7 @@ function Sidebar() {
               Manage Chain
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>
-              Manage Brands
-            </NavLink>
-          </li>
+         
           <li>
             <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>
               Manage SubZones
@@ -41,6 +37,16 @@ function Sidebar() {
               Manage Invoices
             </NavLink>
           </li>
+
+         <li>
+
+         <NavLink to="/manage-brands" className={({ isActive }) => (isActive ? "active" : "")}>
+            Manage Brands
+         </NavLink>
+
+
+         </li>
+
         </ul>
       </nav>
     </aside>

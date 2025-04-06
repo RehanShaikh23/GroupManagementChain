@@ -11,6 +11,8 @@ import EditGroup from "./pages/EditGroup"
 import ManageChain from "./pages/ManageChain"
 import AddChain from "./pages/AddChain"
 import EditChain from "./pages/EditChain"
+import ManageBrand from "./pages/ManageBrand"
+import AddBrand from "./pages/AddBrand"
 import "./App.css"
 
 function App() {
@@ -59,6 +61,21 @@ function App() {
     return chains.some((chain) => chain.groupId === groupId && chain.is_active)
   }
 
+  const [brands, setBrands] = useState(() => {
+    const savedBrands = localStorage.getItem("brands")
+    return savedBrands
+      ? JSON.parse(savedBrands)
+      : [
+          { id: 1, name: "BrandX", chainId: 1, is_active: true },
+          { id: 2, name: "BrandY", chainId: 3, is_active: true },
+        ]
+  })
+  
+  useEffect(() => {
+    localStorage.setItem("brands", JSON.stringify(brands))
+  }, [brands])
+  
+
   return (
     <Router>
       <div className="app">
@@ -67,7 +84,8 @@ function App() {
           <Sidebar />
           <main className="main-content">
             <Routes>
-              <Route path="/" element={<Dashboard groups={groups} chains={chains} />} />
+            <Route path="/" element={<Dashboard groups={groups} chains={chains} brands={brands} />} />
+
               <Route
                 path="/manage-groups"
                 element={
@@ -92,6 +110,11 @@ function App() {
                 path="/edit-chain/:id"
                 element={<EditChain chains={chains} groups={groups} setChains={setChains} />}
               />
+              
+              <Route path="/manage-brands" element={<ManageBrand brands={brands} chains={chains} setBrands={setBrands} />}/>
+
+
+              <Route path="/add-brand" element={<AddBrand brands={brands} chains={chains} setBrands={setBrands} />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>

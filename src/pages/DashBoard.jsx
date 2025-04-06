@@ -4,7 +4,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import "./Dashboard.css"
 
-function Dashboard({ groups, chains }) {
+function Dashboard({ groups, chains, brands }) {
   const [filterGroup, setFilterGroup] = useState("")
 
   // Filter chains based on selected group
@@ -15,12 +15,14 @@ function Dashboard({ groups, chains }) {
       })
     : chains.filter((chain) => chain.is_active)
 
-  // Count active groups and chains
+  // Count active groups, chains, brands
   const activeGroups = groups.filter((group) => group.is_active).length
   const activeChains = chains.filter((chain) => chain.is_active).length
+  const activeBrands = brands.filter((brand) => brand.is_active).length
 
   return (
     <div className="dashboard">
+      {/* Stats Cards */}
       <div className="dashboard-stats">
         <div className="stat-card groups-card">
           <h3>Total Groups</h3>
@@ -30,14 +32,20 @@ function Dashboard({ groups, chains }) {
           <h3>Total Chains</h3>
           <p>{activeChains}</p>
         </div>
+        <div className="stat-card brands-card">
+          <h3>Total Brands</h3>
+          <p>{activeBrands}</p>
+        </div>
       </div>
 
+      {/* Add Button */}
       <div className="dashboard-actions">
         <Link to="/add-chain" className="btn add-btn">
           Add Company
         </Link>
       </div>
 
+      {/* Table + Filters */}
       <div className="dashboard-content">
         <div className="chains-table-container">
           <table className="chains-table">
@@ -77,6 +85,7 @@ function Dashboard({ groups, chains }) {
           </table>
         </div>
 
+        {/* Group Filter Buttons */}
         <div className="filter-section">
           <h3>Filter by Group</h3>
           <div className="filter-links">
@@ -98,5 +107,4 @@ function Dashboard({ groups, chains }) {
   )
 }
 
-export default Dashboard
-
+export default Dashboard;

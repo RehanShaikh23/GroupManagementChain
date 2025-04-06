@@ -1,0 +1,57 @@
+.manage-brands {
+    padding: 20px;
+  }
+  
+  .brands-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .search-container input {
+    padding: 8px;
+    font-size: 14px;
+  }
+  
+  .brands-table-container {
+    overflow-x: auto;
+  }
+  
+  .brands-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .brands-table th,
+  .brands-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .status.active {
+    color: green;
+  }
+  
+  .status.inactive {
+    color: red;
+  }
+  
+  .actions .btn {
+    margin-right: 8px;
+  }
+
+  .btn.add-btn {
+    background-color: #4caf50;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .btn.add-btn:hover {
+    background-color: #45a049;
+  }
+  
